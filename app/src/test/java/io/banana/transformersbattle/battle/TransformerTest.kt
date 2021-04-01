@@ -10,7 +10,8 @@ class TransformerTest {
     @Test
     fun `the overall rating is 15`() {
         val input = Transformer(
-            id = null,
+            id = "",
+            teamIcon = "",
             team = Teams.Decepticons,
             name = Teams.Decepticons.name,
             strength = 1,
@@ -32,7 +33,8 @@ class TransformerTest {
     @Test
     fun `the overall rating is 30`() {
         val input = Transformer(
-            id = null,
+            id = "",
+            teamIcon = "",
             team = Teams.Decepticons,
             name = Teams.Decepticons.name,
             strength = 8,
@@ -54,7 +56,8 @@ class TransformerTest {
     @Test
     fun `the overall rating is 0`() {
         val input = Transformer(
-            id = null,
+            id = "",
+            teamIcon = "",
             team = Teams.Decepticons,
             name = Teams.Decepticons.name,
             strength = 0,
@@ -76,7 +79,8 @@ class TransformerTest {
     @Test
     fun `the overall rating is 2`() {
         val input = Transformer(
-            id = null,
+            id = "",
+            teamIcon = "",
             team = Teams.Decepticons,
             name = Teams.Decepticons.name,
             strength = 1,
@@ -98,17 +102,18 @@ class TransformerTest {
     @Test
     fun `is optimus prime`() {
         val optimusPrime = Transformer(
-        id = null,
-        team = Teams.Autobots,
-        name = "optimus prime",
-        strength = 1,
-        intelligence = 1,
-        speed = 0,
-        endurance = 0,
-        firepower = 0,
-        rank = 8,
-        courage = 7,
-        skill = 8
+            id = "",
+            teamIcon = "",
+            team = Teams.Autobots,
+            name = "optimus prime",
+            strength = 1,
+            intelligence = 1,
+            speed = 0,
+            endurance = 0,
+            firepower = 0,
+            rank = 8,
+            courage = 7,
+            skill = 8
         )
 
         val result = optimusPrime.isOptimusPrime
@@ -119,7 +124,8 @@ class TransformerTest {
     @Test
     fun `is Optimus Prime`() {
         val optimusPrime = Transformer(
-            id = null,
+            id = "",
+            teamIcon = "",
             team = Teams.Autobots,
             name = "Optimus Prime",
             strength = 1,
@@ -140,7 +146,8 @@ class TransformerTest {
     @Test
     fun `is OPTIMUS PRIME`() {
         val optimusPrime = Transformer(
-            id = null,
+            id = "",
+            teamIcon = "",
             team = Teams.Autobots,
             name = "OPTIMUS PRIME",
             strength = 1,
@@ -161,7 +168,8 @@ class TransformerTest {
     @Test
     fun `is predaking`() {
         val optimusPrime = Transformer(
-            id = null,
+            id = "",
+            teamIcon = "",
             team = Teams.Autobots,
             name = "predaking",
             strength = 1,
@@ -182,7 +190,8 @@ class TransformerTest {
     @Test
     fun `is Predaking`() {
         val optimusPrime = Transformer(
-            id = null,
+            id = "",
+            teamIcon = "",
             team = Teams.Autobots,
             name = "Predaking",
             strength = 1,
@@ -203,7 +212,8 @@ class TransformerTest {
     @Test
     fun `is PREDAKING`() {
         val optimusPrime = Transformer(
-            id = null,
+            id = "",
+            teamIcon = "",
             team = Teams.Autobots,
             name = "PREDAKING",
             strength = 1,

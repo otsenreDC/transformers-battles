@@ -628,7 +628,8 @@ class BattleManagerTest {
         firepower: Int = 0,
     ): Transformer =
         Transformer(
-            id = null,
+            id = "",
+            teamIcon = "",
             team = team,
             name = name,
             strength = strength,
