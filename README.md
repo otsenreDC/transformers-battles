@@ -8,7 +8,7 @@ This app performs battles betweewn Autobots and Decepticons.
 
 1. Download the repository
 2. Open Android Studio
-3. Include a google-serivces.json file granting access to this project id io.banana.transformersbattle
+3. Include a google-serivces.json file , in the ./app directory, granting access to this project id io.banana.transformersbattle
 4. Run the emulador
 
 ### Battles assumptions
