@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Transformers Battle</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="transformer_team_image">Transformer\'s team image</string>
+    <string name="edit_transformer_button">Edit transformer button</string>
+    <string name="delete_transformer_button">Delete transformer button</string>
+    <string name="new_transformer">New Transformer</string>
+</resources>

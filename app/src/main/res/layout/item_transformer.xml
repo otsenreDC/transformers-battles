@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/teamIcon"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:alpha="0.25"
+                android:contentDescription="@string/transformer_team_image"
+                android:requestLegacyExternalStorage="true"
+                android:scaleType="fitXY"
+                android:translationX="-40dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.496"
+                app:layout_constraintWidth_percent="0.6"
+                tools:src="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/nameText"
+                style="@style/H2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textAllCaps="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0" />
+
+            <include
+                android:id="@+id/firepowerTechSpec"
+                layout="@layout/content_tech_spec"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/include"
+                app:layout_constraintEnd_toStartOf="@+id/skillTechSpec"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/nameText"
+                app:layout_constraintTop_toBottomOf="@+id/rankTechSpec"
+                bind:label="@{`FPw`}" />
+
+            <include
+                android:id="@+id/intelligenceTechSpec"
+                layout="@layout/content_tech_spec"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/enduranceTechSpec"
+                app:layout_constraintEnd_toStartOf="@+id/deleteButton"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/strengthTechSpec"
+                app:layout_constraintTop_toBottomOf="@+id/nameText"
+                bind:label="@{`Int`}" />
+
+            <include
+                android:id="@+id/speedTechSpec"
+                layout="@layout/content_tech_spec"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/rankTechSpec"
+                app:layout_constraintEnd_toStartOf="@+id/enduranceTechSpec"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/nameText"
+                app:layout_constraintTop_toBottomOf="@+id/strengthTechSpec"
+                bind:label="@{`Spe`}" />
+
+            <include
+                android:id="@+id/enduranceTechSpec"
+                layout="@layout/content_tech_spec"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/courageTechSpec"
+                app:layout_constraintEnd_toStartOf="@+id/deleteButton"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/speedTechSpec"
+                app:layout_constraintTop_toBottomOf="@+id/intelligenceTechSpec"
+                bind:label="@{`End`}" />
+
+            <include
+                android:id="@+id/strengthTechSpec"
+                layout="@layout/content_tech_spec"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/speedTechSpec"
+                app:layout_constraintEnd_toStartOf="@+id/intelligenceTechSpec"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/nameText"
+                app:layout_constraintTop_toBottomOf="@+id/nameText"
+                bind:label="@{`Str`}" />
+
+            <include
+                android:id="@+id/skillTechSpec"
+                layout="@layout/content_tech_spec"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/overallTechSpec"
+                app:layout_constraintEnd_toStartOf="@+id/deleteButton"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/firepowerTechSpec"
+                app:layout_constraintTop_toBottomOf="@+id/courageTechSpec"
+                bind:label="@{`Skl`}" />
+
+            <include
+                android:id="@+id/courageTechSpec"
+                layout="@layout/content_tech_spec"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/skillTechSpec"
+                app:layout_constraintEnd_toStartOf="@+id/deleteButton"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/rankTechSpec"
+                app:layout_constraintTop_toBottomOf="@+id/enduranceTechSpec"
+                bind:label="@{`Cou`}" />
+
+            <include
+                android:id="@+id/rankTechSpec"
+                layout="@layout/content_tech_spec"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/firepowerTechSpec"
+                app:layout_constraintEnd_toStartOf="@+id/courageTechSpec"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/nameText"
+                app:layout_constraintTop_toBottomOf="@+id/speedTechSpec"
+                bind:label="@{`Rnk`}" />
+
+            <include
+                android:id="@+id/overallTechSpec"
+                layout="@layout/content_tech_spec"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/editButton"
+                app:layout_constraintStart_toStartOf="parent"
+                bind:label="@{`OVERALL`}" />
+
+            <ImageButton
+                android:id="@+id/editButton"
+                style="@style/Widget.AppCompat.CompoundButton.RadioButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:contentDescription="@string/edit_transformer_button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_action_edit" />
+
+            <ImageButton
+                android:id="@+id/deleteButton"
+                style="@style/Widget.AppCompat.CompoundButton.RadioButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                android:contentDescription="@string/delete_transformer_button"
+                app:layout_constraintBottom_toTopOf="@+id/editButton"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_action_delete" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="io.banana.transformersbattle.framework.ui.battle.BattleViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/battle_field"
+        tools:context=".framework.ui.battle.BattleFragment">
+
+        <TextView
+            style="@style/H2"
+            isVisible="@{viewModel.onTie}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/tie_ribbon"
+            android:gravity="center"
+            android:padding="24dp"
+            android:text="Tied battle! Both died!!"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/autobotsLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:animateLayoutChanges="true"
+            app:layout_constraintBottom_toTopOf="@id/decepticonsLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/autobotFighterLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Fighter"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/autobotName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/autobotName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@{viewModel.onShowFighters.autobot.name}"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/autobotFighterLabel"
+                tools:text="OPTIMUS PRIME" />
+
+            <include
+                layout="@layout/content_winner"
+                android:visibility="invisible"
+                bind:isVisible="@{viewModel.onShowFightResult.autobotWon}" />
+
+            <include
+                layout="@layout/content_loser"
+                android:visibility="invisible"
+                bind:isVisible="@{viewModel.onShowFightResult.autobotLost}" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/decepticonsLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:animateLayoutChanges="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/autobotsLayout">
+
+            <TextView
+                android:id="@+id/decepticonName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@{viewModel.onShowFighters.decepticon.name}"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/decepticonFighterLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="MEGATRON" />
+
+            <TextView
+                android:id="@+id/decepticonFighterLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Fighter"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/decepticonName" />
+
+            <include
+                isVisible="@{viewModel.onShowFightResult.decepticonWon}"
+                layout="@layout/content_winner"
+                android:visibility="invisible" />
+
+            <include
+                isVisible="@{viewModel.onShowFightResult.decepticonLost}"
+                layout="@layout/content_loser"
+                android:visibility="invisible" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.button.MaterialButton
+            isVisible="@{viewModel.onShowStartBattleButton}"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_margin="16dp"
+            android:onClick="@{() -> viewModel.startBattle()}"
+            android:text="STaRT BaTTLeS"
+            android:textSize="20sp"
+            app:backgroundTint="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="invisible" />
+
+        <include
+            isVisible="@{viewModel.onFinished != null &amp;&amp; !viewModel.onFinished.tie &amp;&amp; !viewModel.onFinished.cataclysm }"
+            layout="@layout/content_battle_results"
+            bind:results="@{viewModel.onFinished}"
+            tools:visibility="invisible" />
+
+        <include
+            isVisible="@{viewModel.onFinished.cataclysm}"
+            layout="@layout/content_battle_results_cataclysm"
+            android:visibility="invisible"
+            bind:results="@{viewModel.onFinished}" />
+
+        <include
+            isVisible="@{viewModel.onFinished.tie}"
+            layout="@layout/content_battle_results_tie"
+            android:visibility="invisible"
+            bind:results="@{viewModel.onFinished}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="io.banana.transformersbattle.framework.ui.transformer_list.TransformerListViewModel" />
+    </data>
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/gray">
+
+            <!-- EMPTY LIST -->
+            <include
+                layout="@layout/layout_error"
+                android:visibility="invisible"
+                app:isVisible="@{!viewModel.onLoadingLiveData &amp;&amp; viewModel.onListLoadedLiveData.size() == 0}"
+                bind:message="@{`No TRANSFORMERS to list. Go and add one.`}" />
+
+            <!-- LOADING -->
+            <include
+                isVisible="@{viewModel.onLoadingLiveData}"
+                layout="@layout/layout_error"
+                android:visibility="invisible" />
+
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/refreshLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/transformersList"
+                isVisible="@{!viewModel.onLoadingLiveData}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:paddingBottom="80dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                tools:itemCount="4"
+                tools:listitem="@layout/item_transformer" />
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+            <com.google.android.material.bottomappbar.BottomAppBar
+                android:id="@+id/bottomAppBar"
+                style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                app:hideOnScroll="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:menu="@menu/menu_home" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/startBattleButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="Add transformer button"
+                android:enabled="@{viewModel.onListLoadedLiveData.size() > 0}"
+                app:layout_anchor="@id/bottomAppBar"
+                app:srcCompat="@drawable/ic_baseline_local_fire_department_24"
+                app:tint="@color/red_900" />
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="io.banana.transformersbattle.domain.models.Teams" />
+
+        <variable
+            name="viewModel"
+            type="io.banana.transformersbattle.framework.ui.create_transformer.TransformersWorkshopViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".framework.ui.create_transformer.TransformersWorkshopFragment">
+
+        <!-- LOADING -->
+        <include
+            isVisible="@{viewModel.onLoadingLiveData}"
+            layout="@layout/layout_loading"
+            android:visibility="invisible" />
+
+        <ScrollView
+            android:id="@+id/createTransformerForm"
+            isVisible="@{!viewModel.onLoadingLiveData}"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/createTransformerButton"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/autobotsButton"
+                        onOptionSelected="@{() -> viewModel.autobotSelected()}"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:checked="@{viewModel.team == Teams.Autobots}"
+                        android:text="Autobot" />
+
+                    <RadioButton
+                        android:id="@+id/decepticonsButton"
+                        onOptionSelected="@{() -> viewModel.decepticonSelected()}"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:checked="@{viewModel.team == Teams.Decepticons}"
+                        android:text="Decepticon" />
+                </RadioGroup>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:hint="Name">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName"
+                        android:lines="1"
+                        android:text="@={viewModel.name}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Strength" />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    initTechSpecValue="@{viewModel.strength}"
+                    onIntOptionSelected="@{(value) -> viewModel.setStrength(value)}"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/listPreferredItemHeight"
+                    android:entries="@array/tech_specs"
+                    tools:listitem="@android:layout/simple_spinner_item" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Intelligence" />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    initTechSpecValue="@{viewModel.intelligence}"
+                    onIntOptionSelected="@{viewModel.setIntelligence}"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/listPreferredItemHeight"
+                    android:entries="@array/tech_specs"
+                    tools:listitem="@android:layout/simple_spinner_item" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Speed" />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    initTechSpecValue="@{viewModel.speed}"
+                    onIntOptionSelected="@{viewModel.setSpeed}"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/listPreferredItemHeight"
+                    android:entries="@array/tech_specs"
+                    tools:listitem="@android:layout/simple_spinner_item" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Endurance" />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    initTechSpecValue="@{viewModel.endurance}"
+                    onIntOptionSelected="@{viewModel.setEndurance}"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/listPreferredItemHeight"
+                    android:entries="@array/tech_specs"
+                    tools:listitem="@android:layout/simple_spinner_item" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Rank" />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    initTechSpecValue="@{viewModel.rank}"
+                    onIntOptionSelected="@{viewModel.setRank}"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/listPreferredItemHeight"
+                    android:entries="@array/tech_specs"
+                    tools:listitem="@android:layout/simple_spinner_item" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Courage" />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    initTechSpecValue="@{viewModel.courage}"
+                    onIntOptionSelected="@{viewModel.setCourage}"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/listPreferredItemHeight"
+                    android:entries="@array/tech_specs"
+                    tools:listitem="@android:layout/simple_spinner_item" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Firepower" />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    initTechSpecValue="@{viewModel.firepower}"
+                    onIntOptionSelected="@{viewModel.setFirepower}"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/listPreferredItemHeight"
+                    android:entries="@array/tech_specs"
+                    tools:listitem="@android:layout/simple_spinner_item" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Skill" />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    initTechSpecValue="@{viewModel.skill}"
+                    onIntOptionSelected="@{viewModel.setSkill}"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/listPreferredItemHeight"
+                    android:entries="@array/tech_specs"
+                    tools:listitem="@android:layout/simple_spinner_item" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp" />
+
+            </LinearLayout>
+        </ScrollView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/createTransformerButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:onClick="@{() -> viewModel.save()}"
+            android:text="Create"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
