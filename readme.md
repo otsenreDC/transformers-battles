@@ -31,3 +31,7 @@ This app performs battles between Autobots and Decepticons.
   TLS test ran with: https://www.cdn77.com/tls-test
 2. Sometimes Glide fails to fetch the team icon
 3. Extract string resources
+
+### Update
+
+1. ProviderInstaller was removed
